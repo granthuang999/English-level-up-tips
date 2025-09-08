@@ -1,4 +1,4 @@
-本指南所有内容均出自网络，特此申明 `W.` 开始学习请点击屏幕左上角**“学习导航”**。
+本指南所有内容均出自网络，特此申明 `W.` 开始学习请点击屏幕左上角“**学习导航**”。
 
 > 我们每个人都生活在各自的过去中，人们会用一分钟的时间去认识一个人，用一小时的时间去喜欢一个人，再用一天的时间去爱上一个人，到最后呢，却要用一辈子的时间去忘记一个人。
 
@@ -6,11 +6,11 @@
 
 An advanced guide to learn English which might benefit you a lot.
 
-[离谱的英语学习指南/英语学习教程](https://english-study.futuremedia.work/#/)。
+[未来传媒英语学习指南/英语学习教程](https://english-study.futuremedia.work)。
 
 ## 背景
 
-你好啊朋友，欢迎来到[离谱的英语学习指南]((https://english-study.futuremedia.work/#/)。
+你好啊朋友，欢迎来到[未来传媒的英语学习指南]((https://english-study.futuremedia.work)。
 
 当你的目光与这些文字相遇，我衷心希望，这不仅仅是一次攻克英语的艰苦征程，更是一场开启智慧之门的奇妙冒险。愿这方寸纸墨，化作你我心灵共鸣的琴弦，弹奏出语言学习的天籁妙音。
 
@@ -53,19 +53,13 @@ The only way to do great work is to love what you do. If you haven't found it ye
 
 [![Others@2x.png](assets/Others@2x.png)](part-2/x-misc.md)
 
-## 感谢
-
-- 感谢所有关心以及为这份指南做出贡献的人 ❤️
 
 
-## 在线阅读
-
-- 知乎 [离谱的英语学习指南](https://zhuanlan.zhihu.com/p/444211376)
-- GitHub Pages [English-level-up-tips](https://english-study.futuremedia.work/#/)
 
 ## 转载声明
 
-本指南，转自https://github.com/byoungd/English-level-up-tips，谢谢！
+本指南，转自https://github.com/byoungd/English-level-up-tips，本人fork部署在https://github.com/granthuang/English-level-up-tips，谢谢！
+- 感谢所有关心以及为这份指南做出贡献的人 ❤️
 
 ## 协议/License
 
