@@ -1,6 +1,6 @@
-# Summary
+# 英语学习首页
 
-### Part I
+### 第一部分
 
 * [1.认知篇](part-1/1-understanding.md)
 * [2.单词篇](part-1/2-vocabulary.md)
@@ -9,7 +9,7 @@
 * [5.口语篇](part-1/5-speaking.md)
 
 
-### Part II
+### 第二部分
 
 * [8.扯淡篇](part-2/x-misc.md)
 
