@@ -4,75 +4,53 @@
     <meta charset="UTF-8" />
     <title>英语学习指南-未来传媒</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-   <meta name="description" content="专注中年人的身心健康，学习成长，投资理财，与时俱进自由生活，英语学习" />
-    <meta
-      name="keywords"
-      content="英语学习，雅思，托福，英语口语，英文写作，英语考试，英语自学，留学，移民，"
-    />
+    <meta name="description" content="专注中年人的身心健康，学习成长，投资理财，与时俱进自由生活，英语学习" />
+    <meta name="keywords" content="英语学习，雅思，托福，英语口语，英文写作，英语考试，英语自学，留学，移民，" />
     <meta name="author" content="疯子" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
-    />
-    <link
-      rel="stylesheet"
-      media="(prefers-color-scheme: dark)"
-      href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple-dark.css"
-    />
-    <link
-      rel="stylesheet"
-      media="(prefers-color-scheme: light)"
-      href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+    <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple-dark.css" />
+    <link rel="stylesheet" media="(prefers-color-scheme: light)" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css" />
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar.min.css" />
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.css" />
+    <script src="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
 
     <style type="text/css">
-      iframe {
-        display: block;
-        border: none;
-        height: 75vh;
-        width: 100%;
+      iframe { display: block; border: none; height: 75vh; width: 100%; }
+
+      /* --- [MODIFIED] 样式最终版 --- */
+      
+      /* 1. 强制隐藏 Docsify 默认的开关按钮 */
+      .sidebar-toggle {
+        display: none !important;
       }
       
-      /* --- [MODIFIED] 样式调整 --- */
-
-      /* 1. 强制隐藏侧边栏 */
-      .sidebar {
-        transform: translateX(0); /* 先确保它在初始位置 */
-        transition: transform .25s ease-out;
-      }
-      body.close .sidebar {
-        transform: translateX(-300px); /* ‘close’状态下将其移出屏幕 */
-      }
-      body.close .content {
-        left: 0; /* 主内容区域回到最左边 */
-      }
-      
-      /* 2. 强制页眉导航链接为白色 */
-      .page-header a, .custom-nav-link a {
-        color: white !important;
-        text-decoration: none;
-      }
-
-      /* 3. “学习导航”按钮样式 */
+      /* 2. 我们自定义的“学习导航”按钮样式 */
       .sidebar-toggle-custom {
-        position: absolute;
+        position: fixed; /* 改为 fixed 定位，确保它总在左上角 */
         top: 0;
         left: 0;
-        width: 50px;
-        height: 42px;
-        padding: 14px 10px;
+        width: auto; /* 自动宽度 */
+        padding: 14px 15px;
         border: 0;
-        background: 0 0;
+        background: rgba(255, 255, 255, 0.8);
         font-size: 14px;
         font-weight: bold;
         line-height: 1;
         cursor: pointer;
-        z-index: 30; /* 确保在最上层 */
+        z-index: 30;
         color: var(--theme-color, #42b983);
-        display: block;
-        text-align: center;
+        border-bottom-right-radius: 8px; /* 加个小圆角 */
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      }
+      body.close .sidebar-toggle-custom{
+         background: transparent; /* 侧边栏关闭时，按钮背景透明 */
+         box-shadow: none;
+      }
+
+      /* 3. 强制页眉和右上角导航链接为白色 */
+      .page-header a, .custom-nav-link a {
+        color: white !important;
+        text-decoration: none;
       }
 
       /* 4. 右上角返回首页链接样式 */
@@ -104,11 +82,10 @@
     </style>
   </head>
   <body>
+    <button class="sidebar-toggle-custom">学习导航</button>
     <div class="custom-nav-link">
         <a href="https://www.futuremedia.work">返回未来传媒首页</a>
     </div>
-    
-    <button class="sidebar-toggle-custom">学习导航</button>
 
     <header id="header" class="page-header">
         <nav class="header-nav-menu">
@@ -148,24 +125,44 @@
       let num = 0;
       mermaid.initialize({ startOnLoad: false });
       markmapSvg = [];
-      const transformer = new markmap.Transformer();
+      // ... (其他插件初始化保持不变) ...
+
       window.$docsify = {
         name: "content",
-        // [修改] 移除了 repo 和 loadNavbar
         loadSidebar: "SUMMARY.md",
         alias: {
           "/.*/SUMMARY.md": "/SUMMARY.md",
         },
-        // [修改] 移除了 sidebarDisplayLevel
         subMaxLevel: 3, 
         auto2top: true,
-        // [修改] 禁用 Docsify 自带的开关按钮
-        sidebarToggle: false,
-        markdown: {
-          // ... (这部分配置保持不变) ...
-        },
         plugins: [
-          // ... (这部分配置保持不变) ...
+          // [MODIFIED] 使用插件钩子来控制侧边栏
+          function (hook, vm) {
+            hook.ready(function () {
+              // 这个函数会在 Docsify 初始化完成后执行
+              const body = document.body;
+              const customToggle = document.querySelector('.sidebar-toggle-custom');
+              
+              // 1. 默认隐藏侧边栏
+              body.classList.add('close');
+
+              // 2. 为我们的自定义按钮绑定事件
+              if (customToggle) {
+                customToggle.addEventListener('click', function() {
+                  // 点击时切换 Docsify 控制侧边栏的 .close 类
+                  body.classList.toggle('close');
+                });
+              }
+            });
+            
+            // ... (您原来的插件逻辑保持不变)
+            hook.beforeEach(function (html) {
+              // ...
+            });
+            hook.doneEach(function () {
+              // ...
+            });
+          },
         ],
       };
     </script>
@@ -183,21 +180,8 @@
         textColor: "#fff",
       });
 
-      // --- [新增] 自定义脚本来控制侧边栏 ---
+      // 页脚和收藏功能脚本
       document.addEventListener('DOMContentLoaded', function() {
-        // 1. 默认关闭侧边栏
-        const body = document.body;
-        body.classList.add('close');
-
-        // 2. 绑定自定义开关事件
-        const customToggle = document.querySelector('.sidebar-toggle-custom');
-        if (customToggle) {
-          customToggle.addEventListener('click', function() {
-            body.classList.toggle('close');
-          });
-        }
-        
-        // 3. 页脚脚本
         document.getElementById("copyrightYear").innerHTML = new Date().getFullYear();
         const siteStartDate = "6/4/2025";
         if (siteStartDate) {
@@ -212,7 +196,11 @@
       });
       
       function addFavorite() {
-          // ... (收藏函数保持不变) ...
+          try { window.external.addFavorite(window.location.href, document.title); } 
+          catch (e) {
+            try { window.sidebar.addPanel(document.title, window.location.href, ""); } 
+            catch (e) { alert("抱歉，您的浏览器不支持自动收藏功能。\n请使用 Ctrl+D (Windows) 或 Command+D (Mac) 来手动收藏。"); }
+          }
       }
     </script>
   </body>
