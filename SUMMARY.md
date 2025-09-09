@@ -10,13 +10,9 @@
 
 ### 第二部分
 
-* [6.经济学人 - 周刊](https://www.futuremedia.work/english-book/01_economist/te_2025.09.06) 
-* [7.纽约客 - 周刊](https://www.futuremedia.work/english-book/02_new_yorker/2025.09.08) 
-* [8.The Atlantic - 月刊](https://www.futuremedia.work/english-book/04_atlantic/2025.09.02)
-* [9.Wired - 月刊](https://www.futuremedia.work/english-book/05_wired/2025.09.02)
-* [更多杂志下载阅读说明](https://www.futuremedia.work/post/english-book-download.html)
+* [6.英语杂志下载](https://www.futuremedia.work/post/english-book-download.html)
 
 ### 第三部分
 
-* [10.扯淡篇](part-2/x-misc.md)
+* [7.扯淡篇](part-2/x-misc.md)
 
