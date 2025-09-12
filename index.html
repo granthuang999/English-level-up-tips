@@ -132,11 +132,12 @@
 
       window.$docsify = {
         name: "学习目录",
+        // [关键修正] 明确指定 Docsify 网站的基准路径
+        basePath: '/english-study/',
         loadSidebar: "SUMMARY.md",
         alias: {
           "/.*/SUMMARY.md": "/SUMMARY.md",
         },
-        // [关键修正] 明确指定首页文件，防止内容递归
         homepage: 'README.md', 
         subMaxLevel: 3, 
         auto2top: true,
