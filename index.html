@@ -96,7 +96,7 @@
             <a href="https://www.futuremedia.work/xue-xi-cheng-chang.html">修行</a>
             <a href="https://www.futuremedia.work/chao-liu-gong-ju.html">未来</a>
             <a href="https://www.futuremedia.work/qi-ta-hua-ti.html">其他</a>
-            <a href="https://www.futuremedia.work/english-study/index.html">英语</a>
+            <a href="https://www.futuremedia.work/english-study">英语</a>
             <a href="https://www.futuremedia.work/tools-link.html">AI</a>
             <a href="https://www.futuremedia.work/pansou.html">盘搜</a>
             <a href="https://www.futuremedia.work/about.html">关于本站</a>
@@ -132,31 +132,33 @@
 
       window.$docsify = {
         name: "学习目录",
-        // [关键修正] 明确指定 Docsify 网站的基准路径
-        basePath: '/english-study/',
         loadSidebar: "SUMMARY.md",
         alias: {
           "/.*/SUMMARY.md": "/SUMMARY.md",
         },
-        homepage: 'README.md', 
         subMaxLevel: 3, 
         auto2top: true,
-        routerMode: 'history',
         plugins: [
+          // [MODIFIED] 使用插件钩子来控制侧边栏
           function (hook, vm) {
             hook.ready(function () {
+              // 这个函数会在 Docsify 初始化完成后执行
               const body = document.body;
               const customToggle = document.querySelector('.sidebar-toggle-custom');
               
+              // 1. 默认隐藏侧边栏
               body.classList.add('close');
 
+              // 2. 为我们的自定义按钮绑定事件
               if (customToggle) {
                 customToggle.addEventListener('click', function() {
+                  // 点击时切换 Docsify 控制侧边栏的 .close 类
                   body.classList.toggle('close');
                 });
               }
             });
             
+            // ... (您原来的插件逻辑保持不变)
             hook.beforeEach(function (html) {
               // ...
             });
