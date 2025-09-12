@@ -138,27 +138,23 @@
         },
         subMaxLevel: 3, 
         auto2top: true,
+        // [新增] 开启 History 路由模式，移除URL中的'#'
+        routerMode: 'history',
         plugins: [
-          // [MODIFIED] 使用插件钩子来控制侧边栏
           function (hook, vm) {
             hook.ready(function () {
-              // 这个函数会在 Docsify 初始化完成后执行
               const body = document.body;
               const customToggle = document.querySelector('.sidebar-toggle-custom');
               
-              // 1. 默认隐藏侧边栏
               body.classList.add('close');
 
-              // 2. 为我们的自定义按钮绑定事件
               if (customToggle) {
                 customToggle.addEventListener('click', function() {
-                  // 点击时切换 Docsify 控制侧边栏的 .close 类
                   body.classList.toggle('close');
                 });
               }
             });
             
-            // ... (您原来的插件逻辑保持不变)
             hook.beforeEach(function (html) {
               // ...
             });
