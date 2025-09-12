@@ -128,16 +128,18 @@
       let num = 0;
       mermaid.initialize({ startOnLoad: false });
       markmapSvg = [];
-      // ... (其他插件初始化保持不变) ...
 
       window.$docsify = {
         name: "学习目录",
-        // [关键修正] 明确指定 Docsify 网站的基准路径
+        // [关键修正 1] 指定 Docsify 网站的基准路径
         basePath: '/english-study/',
         loadSidebar: "SUMMARY.md",
-        alias: {
-          "/.*/SUMMARY.md": "/SUMMARY.md",
-        },
+        
+        // [关键修正 2] 移除错误的 alias 配置
+        // alias: {
+        //   "/.*/SUMMARY.md": "/SUMMARY.md",
+        // },
+        
         homepage: 'README.md', 
         subMaxLevel: 3, 
         auto2top: true,
