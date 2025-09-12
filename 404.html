@@ -136,9 +136,10 @@
         alias: {
           "/.*/SUMMARY.md": "/SUMMARY.md",
         },
+        // [关键修正] 明确指定首页文件，防止内容递归
+        homepage: 'README.md', 
         subMaxLevel: 3, 
         auto2top: true,
-        // [新增] 开启 History 路由模式，移除URL中的'#'
         routerMode: 'history',
         plugins: [
           function (hook, vm) {
